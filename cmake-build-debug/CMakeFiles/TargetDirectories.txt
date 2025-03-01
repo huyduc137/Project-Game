@@ -1,0 +1,3 @@
+D:/LTNC/project_game/cmake-build-debug/CMakeFiles/project_game.dir
+D:/LTNC/project_game/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/LTNC/project_game/cmake-build-debug/CMakeFiles/rebuild_cache.dir

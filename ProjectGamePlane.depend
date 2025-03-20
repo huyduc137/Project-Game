@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1742463344 source:d:\ltnc\projectgameplane\baseobject.cpp
+	"BaseObject.h"
+
+1742463344 d:\ltnc\projectgameplane\baseobject.h
+	"CommonFunc.h"
+
+1742463344 d:\ltnc\projectgameplane\commonfunc.h
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<string>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1742463344 source:d:\ltnc\projectgameplane\bullet.cpp
+	"Bullet.h"
+	"PlaneMain.h"
+
+1742463344 d:\ltnc\projectgameplane\bullet.h
+	<vector>
+	"BaseObject.h"
+
+1742463344 d:\ltnc\projectgameplane\planemain.h
+	<vector>
+	"BaseObject.h"
+	"Bullet.h"
+	"MapGame.h"
+
+1742463344 d:\ltnc\projectgameplane\mapgame.h
+	"BaseObject.h"
+
+1742463344 source:d:\ltnc\projectgameplane\commonfunc.cpp
+	"CommonFunc.h"
+
+1742463344 source:d:\ltnc\projectgameplane\mapgame.cpp
+	"MapGame.h"
+	<sstream>
+	<fstream>
+
+1742463344 source:d:\ltnc\projectgameplane\planemain.cpp
+	"PlaneMain.h"
+
+1742463344 source:d:\ltnc\projectgameplane\textobject.cpp
+	"TextObject.h"
+
+1742463344 d:\ltnc\projectgameplane\textobject.h
+	"CommonFunc.h"
+	<string>
+	<SDL_ttf.h>
+

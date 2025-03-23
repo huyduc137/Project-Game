@@ -49,3 +49,26 @@
 	<string>
 	<SDL_ttf.h>
 
+1742462827 source:d:\ltnc\projectgameplane\main.cpp
+	"CommonFunc.h"
+	"BaseObject.h"
+	"PlaneMain.h"
+	"MapGame.h"
+	"TextObject.h"
+	"Menu.h"
+
+1742463344 d:\ltnc\projectgameplane\menu.h
+	"MenuItem.h"
+	"TextObject.h"
+	<vector>
+
+1742463412 d:\ltnc\projectgameplane\menuitem.h
+	"BaseObject.h"
+	<string>
+
+1742463344 source:d:\ltnc\projectgameplane\menu.cpp
+	"Menu.h"
+
+1742463429 source:d:\ltnc\projectgameplane\menuitem.cpp
+	"MenuItem.h"
+

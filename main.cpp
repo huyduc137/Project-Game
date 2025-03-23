@@ -155,8 +155,17 @@ huydeptrai:
 
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) running = false;
-            if (gameState == MENU_STATE_MAIN || gameState == MENU_STATE_GUIDE) {
-                menu.handleEvents(event, gameState);
+            if (gameState == MENU_STATE_MAIN) {
+                // menu.handleEvents(event, gameState);
+                menu.handleEventsGuide(event , gameState);
+                menu.handleEventsPlay(event , gameState);
+                menu.handleEventsQuit(event , gameState);
+            }
+            else if (gameState == MENU_STATE_GUIDE) {
+                if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE) {
+                    gameState = MENU_STATE_MAIN;
+                    goto huydeptrai;
+                }
             }
             else if (gameState == MENU_STATE_PLAY) {
                 planeMain.MovePlane(event, renderer);
@@ -179,6 +188,9 @@ huydeptrai:
         }
         else if (gameState == MENU_STATE_GUIDE) {
             menu.renderGuide(renderer, font);
+        }
+        else if (gameState == MENU_STATE_QUIT) {
+            running = false;
         }
         else if (gameState == MENU_STATE_PLAY) {
             // Update power-ups status

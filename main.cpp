@@ -207,6 +207,7 @@ huydeptrai:
 
             // Check for game over
             if (planeMain.isGameOver()) {
+over:
                 // Render game over message
                 BackGround_End.loadImg("img/BackGround_End.jpg" , renderer);
                 back.loadImg("img/back.png" , renderer);
@@ -258,6 +259,8 @@ huydeptrai:
                 if (currentY < 0) {
                     currentY = map.getMaxY() - SCREEN_HEIGHT;
                 }
+
+                if (currentY == 1) goto over;   // cuộn cuối map
                 map.setYStart(currentY);
 
                 planeMain.ShowPlane(renderer);

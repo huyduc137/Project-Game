@@ -13,10 +13,10 @@
 - Khi nhấn vào nút **"PLAY"** game sẽ bắt đầu
 - Khi nhấn vào nút **"GUIDE"** sẽ hiện ra hướng dẫn chơi game cho người chơi
 - Khi nhấn vào nút **"QUIT"** sẽ thoát chương trình game
-![image](./readme/menu.png)
+![image](./readme/menu.jpg)
 ### 2. Các thành phần trong game
 - **Plane (Người chơi):** ![image](./readme/planemain.png) là đối tượng chính của trò chơi
-- **Background (Nền phía sau):** ![image](./readme/background_game.png) là hình ảnh nền tạo nên 1 không gian thú vị cho người chơi
+- **Background (Nền phía sau):** ![image](./readme/background_game.jpg) là hình ảnh nền tạo nên 1 không gian thú vị cho người chơi
 - **Máy bay kẻ địch:**  ![image](./readme/dich.png) được coi là chướng ngại vật, kẻ thù của máy bay do người chơi điều khiển
 - **Đạn:** ![image](./readme/bullet.png) là một chức năng của máy bay chiến đấu dùng để bắn hạ kẻ địch
 - **Sinh mệnh:** ![image](./readme/sinhmenh.png) là một chức năng giúp cho máy bay chiến đấu tăng sinh mệnh, tăng cơ hội sống xót

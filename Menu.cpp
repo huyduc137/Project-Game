@@ -13,21 +13,22 @@ bool Menu::loadMenu(SDL_Renderer* screen) {
     // Tải hình nền menu
     bool ret = menuBackground.loadImg("img/menu_bg.jpg", screen);
     if (!ret) return false;
+    menuBackground.setRect(-212 , -90);
 
     // Tải nút Start
     ret = startButton.loadImg("img/play_button.png", screen);
     if (!ret) return false;
-    startButton.setPosition(SCREEN_WIDTH/2 - startButton.getRect().w/2, SCREEN_HEIGHT/2 - 200);
+    startButton.setPosition(SCREEN_WIDTH/2 - startButton.getRect().w/2, SCREEN_HEIGHT/2 - 150);
 
     // Tải nút Guide
     ret = guideButton.loadImg("img/guide_button.png", screen);
     if (!ret) return false;
-    guideButton.setPosition(SCREEN_WIDTH/2 - guideButton.getRect().w/2, SCREEN_HEIGHT/2 - 50);
+    guideButton.setPosition(SCREEN_WIDTH/2 - guideButton.getRect().w/2, SCREEN_HEIGHT/2 - 20);
 
     // Tải nút Quit
     ret = quitButton.loadImg("img/qquit.png" , screen);
     if (!ret) return false;
-    quitButton.setPosition(SCREEN_WIDTH/2 - quitButton.getRect().w/2 , SCREEN_HEIGHT/2 + 100);
+    quitButton.setPosition(SCREEN_WIDTH/2 - quitButton.getRect().w/2 , SCREEN_HEIGHT/2 + 110);
 
     // Khởi tạo các text hướng dẫn
     for (int i = 0; i < 5; i++) {
@@ -131,7 +132,7 @@ void Menu::renderGuide(SDL_Renderer* screen, TTF_Font* font) {
     guideTexts[4].setText("Nhấn ESC để quay lại menu chính");
 
     // Vẽ các dòng hướng dẫn
-    int y_pos = 150;
+    int y_pos = 220;
     for (int i = 0; i < guideTexts.size(); i++) {
         guideTexts[i].loadFromRenderText(font, screen);
         int x_pos = SCREEN_WIDTH/2 - guideTexts[i].getRect().w/2;

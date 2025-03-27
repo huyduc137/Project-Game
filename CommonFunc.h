@@ -25,7 +25,7 @@ extern Mix_Chunk* g_sound_click;
 
 // chiều dài rộng của cửa sổ
 const int SCREEN_WIDTH = 650;
-const int SCREEN_HEIGHT = 970;
+const int SCREEN_HEIGHT = 870;
 const int SCREEN_BPP = 32;
 
 const int COLOR_KEY_R = 167;

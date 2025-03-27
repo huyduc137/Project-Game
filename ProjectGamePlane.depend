@@ -5,7 +5,7 @@
 1742463344 d:\ltnc\projectgameplane\baseobject.h
 	"CommonFunc.h"
 
-1742463344 d:\ltnc\projectgameplane\commonfunc.h
+1742908944 d:\ltnc\projectgameplane\commonfunc.h
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -49,7 +49,7 @@
 	<string>
 	<SDL_ttf.h>
 
-1742905652 source:d:\ltnc\projectgameplane\main.cpp
+1743043104 source:d:\ltnc\projectgameplane\main.cpp
 	"CommonFunc.h"
 	"BaseObject.h"
 	"PlaneMain.h"
@@ -66,7 +66,7 @@
 	"BaseObject.h"
 	<string>
 
-1742756086 source:d:\ltnc\projectgameplane\menu.cpp
+1743043104 source:d:\ltnc\projectgameplane\menu.cpp
 	"Menu.h"
 
 1742756086 source:d:\ltnc\projectgameplane\menuitem.cpp

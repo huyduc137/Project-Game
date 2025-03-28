@@ -143,6 +143,8 @@ huydeptrai:
     BaseObject BackGround_End;
     // Nút Back (Quay Lại)
     MenuItem back;
+    // Background_WIN
+    BaseObject win;
 
     // FPS control
     const int FPS = 60;
@@ -207,7 +209,6 @@ huydeptrai:
 
             // Check for game over
             if (planeMain.isGameOver()) {
-over:
                 // Render game over message
                 BackGround_End.loadImg("img/BackGround_End.jpg" , renderer);
                 back.loadImg("img/back.png" , renderer);
@@ -260,7 +261,29 @@ over:
                     currentY = map.getMaxY() - SCREEN_HEIGHT;
                 }
 
-                if (currentY == 1) goto over;   // cuộn cuối map
+                if (currentY == 1)   // cuộn cuối map
+                {
+                    SDL_RenderClear(renderer);
+                    win.loadImg("img/youwin.png" , renderer);
+                    win.render(renderer);
+                    SDL_RenderPresent(renderer);
+                    SDL_Event tempEvent;
+                    bool waitingForEsc = true;
+                    while (waitingForEsc) {
+                        while (SDL_PollEvent(&tempEvent)) {
+                            if (tempEvent.type == SDL_QUIT) {
+                                waitingForEsc = false;
+                            }
+                            if (tempEvent.type == SDL_KEYDOWN && tempEvent.key.keysym.sym == SDLK_ESCAPE) {
+                                waitingForEsc = false;
+                                gameState = MENU_STATE_MAIN;
+                                // Reset the plane
+                                goto huydeptrai;
+                            }
+                        }
+                        SDL_Delay(10);
+                    }
+                }
                 map.setYStart(currentY);
 
                 planeMain.ShowPlane(renderer);

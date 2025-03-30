@@ -17,7 +17,8 @@
 - **Background (Nền phía sau):** ![image](./readme/background_game.jpg)
 là hình ảnh nền tạo nên 1 không gian thú vị cho người chơi
 - **Máy bay kẻ địch:**  ![image](./readme/dich.png) được coi là chướng ngại vật, kẻ thù của máy bay do người chơi điều khiển
-- **Đạn:** ![image](./readme/bullet.png) là một chức năng của máy bay chiến đấu dùng để bắn hạ kẻ địch
+- **Đạn:** ![image](./readme/bulletMain.png) là một chức năng của máy bay chiến đấu dùng để bắn hạ kẻ địch
+- **Đạn địch:** ![image](./readme/bulletEnemy.png) là một chức năng của máy bay địch để bắn
 - **Sinh mệnh:** ![image](./readme/sinhmenh.png) là một chức năng giúp cho máy bay chiến đấu tăng sinh mệnh, tăng cơ hội sống xót
 - **Đạn đôi:** ![image](./readme/dich.png) là một chức năng giúp cho máy bay tăng sức mạnh, bắn ra 2 viên đạn cùng 1 lúc
 - **Điểm số:** ![image](./readme/point.png) hiển thị điểm số của người chơi khi bắn trúng kẻ địch. Bắn trúng mỗi kẻ địch sẽ được cộng 5 điểm  

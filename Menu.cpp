@@ -30,8 +30,13 @@ bool Menu::loadMenu(SDL_Renderer* screen) {
     if (!ret) return false;
     quitButton.setPosition(SCREEN_WIDTH/2 - quitButton.getRect().w/2 , SCREEN_HEIGHT/2 + 110);
 
+    // Tải nút PauseGame
+    ret = continueButton.loadImg("img/button_continue.png", screen);
+    if (!ret) return false;
+    continueButton.setPosition(SCREEN_WIDTH/2 - startButton.getRect().w/2, SCREEN_HEIGHT/2 - 150);
+
     // Khởi tạo các text hướng dẫn
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 6; i++) {
         TextObject text;
         text.setColor(TextObject::WHITE);
         guideTexts.push_back(text);
@@ -41,6 +46,9 @@ bool Menu::loadMenu(SDL_Renderer* screen) {
 }
 
 void Menu::render(SDL_Renderer* screen) {
+
+    guideButton.setPosition(SCREEN_WIDTH/2 - guideButton.getRect().w/2, SCREEN_HEIGHT/2 - 20);
+    quitButton.setPosition(SCREEN_WIDTH/2 - quitButton.getRect().w/2 , SCREEN_HEIGHT/2 + 110);
     // Vẽ nền menu
     menuBackground.render(screen);
 
@@ -49,6 +57,15 @@ void Menu::render(SDL_Renderer* screen) {
     guideButton.render(screen);
     quitButton.render(screen);
 }
+
+void Menu::renderContinue(SDL_Renderer *screen) {
+    quitButton.setPosition(SCREEN_WIDTH/2 - quitButton.getRect().w/2 , SCREEN_HEIGHT/2 + 25);
+    continueButton.setPosition(SCREEN_WIDTH/2 - startButton.getRect().w/2, SCREEN_HEIGHT/2 - 100);
+    menuBackground.render(screen);
+    continueButton.render(screen);
+    quitButton.render(screen);
+}
+
 
 // void Menu::handleEvents(SDL_Event& event, MenuState& currentState) {
 //     if (event.type == SDL_MOUSEBUTTONDOWN) {
@@ -120,6 +137,21 @@ void Menu :: handleEventsQuit(SDL_Event &event , MenuState &currentState) {
         }
     }
 }
+void Menu::handleEventsContinue(SDL_Event &event, MenuState &currentState) {
+    if (event.type == SDL_MOUSEBUTTONDOWN) {
+        if (event.button.button == SDL_BUTTON_LEFT) {
+            int x = event.button.x;
+            int y = event.button.y;
+            if (continueButton.isClicked(x, y)) {
+                if (g_sound_click != nullptr) {
+                    Mix_PlayChannel(-1, g_sound_click, 0);
+                }
+                currentState = MENU_STATE_PLAY;
+            }
+        }
+    }
+}
+
 void Menu::renderGuide(SDL_Renderer* screen, TTF_Font* font) {
     // Vẽ nền menu
     menuBackground.render(screen);
@@ -129,7 +161,8 @@ void Menu::renderGuide(SDL_Renderer* screen, TTF_Font* font) {
     guideTexts[1].setText("Sử dụng các phím mũi tên để di chuyển máy bay");
     guideTexts[2].setText("Nhấn SPACE để bắn");
     guideTexts[3].setText("Bắn trúng các chướng ngại vật để ghi điểm");
-    guideTexts[4].setText("Nhấn ESC để quay lại menu chính");
+    guideTexts[4].setText("Né đạn và địch. Nếu dính đạn bị trừ 1 sinh mệnh");
+    guideTexts[5].setText("Nhấn ESC để quay lại menu chính");
 
     // Vẽ các dòng hướng dẫn
     int y_pos = 220;

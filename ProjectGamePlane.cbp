@@ -37,6 +37,8 @@
 		<Unit filename="Bullet.h" />
 		<Unit filename="CommonFunc.cpp" />
 		<Unit filename="CommonFunc.h" />
+		<Unit filename="EnemyBullet.cpp" />
+		<Unit filename="EnemyBullet.h" />
 		<Unit filename="MapGame.cpp" />
 		<Unit filename="MapGame.h" />
 		<Unit filename="Menu.cpp" />

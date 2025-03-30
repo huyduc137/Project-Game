@@ -136,13 +136,16 @@ huydeptrai:
 
     TextObject livesText;
     livesText.setColor(TextObject::WHITE);
+    TextObject pause_game;
 
     // lives
     BaseObject heart;
     // BackGround End
     BaseObject BackGround_End;
+    BackGround_End.loadImg("img/BackGround_End.jpg" , renderer);
     // Nút Back (Quay Lại)
     MenuItem back;
+    back.loadImg("img/back.png" , renderer);
     // Background_WIN
     BaseObject win;
 
@@ -172,11 +175,17 @@ huydeptrai:
             else if (gameState == MENU_STATE_PLAY) {
                 planeMain.MovePlane(event, renderer);
 
-                // Thêm phím ESC để quay lại menu chính từ màn hình chơi
+                if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_p) {
+                    gameState = MENU_STATE_PAUSE;
+                }
                 if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE) {
                     gameState = MENU_STATE_MAIN;
-                    goto huydeptrai;     // load lại map
+                    goto huydeptrai;
                 }
+            }
+            else if (gameState == MENU_STATE_PAUSE) {
+                menu.handleEventsContinue(event , gameState);
+                menu.handleEventsQuit(event , gameState);
             }
         }
 
@@ -210,8 +219,6 @@ huydeptrai:
             // Check for game over
             if (planeMain.isGameOver()) {
                 // Render game over message
-                BackGround_End.loadImg("img/BackGround_End.jpg" , renderer);
-                back.loadImg("img/back.png" , renderer);
                 back.setPosition(SCREEN_WIDTH / 2 - back.getRect().w / 2, SCREEN_HEIGHT / 2 + 230);
                 BackGround_End.render(renderer);
                 back.render(renderer);
@@ -286,8 +293,15 @@ huydeptrai:
                 }
                 map.setYStart(currentY);
 
+                // Sinh đạn enemy (mỗi frame, sẽ kiểm tra và tạo đạn nếu đủ điều kiện)
+                map.TryEnemyShoot(renderer);
+                // Cập nhật và render đạn enemy
+                map.HandleEnemyBullets(renderer);
                 planeMain.ShowPlane(renderer);
                 planeMain.HandleBullet(renderer);
+
+                // Thêm kiểm tra va chạm giữa đạn enemy và máy bay chính:
+                planeMain.CheckEnemyBulletCollision();
 
                 // Display score
                 std::string scoreString = "Score: " + std::to_string(planeMain.getScore());
@@ -303,7 +317,20 @@ huydeptrai:
                 livesText.setText(textLives);
                 livesText.loadFromRenderText(font, renderer);
                 livesText.render(renderer, 30, 40);
+
+                // Display pause
+                std::string pauseString = "Pause: [P]";
+                pause_game.setText(pauseString);
+                pause_game.loadFromRenderText(font, renderer);
+                pause_game.render(renderer ,  520, 12);
+                pauseString = "Menu: [Esc]";
+                pause_game.setText(pauseString);
+                pause_game.loadFromRenderText(font, renderer);
+                pause_game.render(renderer, 520, 45);
             }
+        }
+        else if (gameState == MENU_STATE_PAUSE) {
+            menu.renderContinue(renderer);
         }
 
         SDL_RenderPresent(renderer);

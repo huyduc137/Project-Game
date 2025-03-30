@@ -5,7 +5,13 @@
 1742463344 d:\ltnc\projectgameplane\baseobject.h
 	"CommonFunc.h"
 
-1743045701 d:\ltnc\projectgameplane\commonfunc.h
+1743311922 d:\ltnc\projectgameplane\commonfunc.h
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<string>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -21,24 +27,28 @@
 	<vector>
 	"BaseObject.h"
 
-1742463344 d:\ltnc\projectgameplane\planemain.h
+1743311922 d:\ltnc\projectgameplane\planemain.h
 	<vector>
 	"BaseObject.h"
 	"Bullet.h"
 	"MapGame.h"
 
-1742463344 d:\ltnc\projectgameplane\mapgame.h
+1743311922 d:\ltnc\projectgameplane\mapgame.h
 	"BaseObject.h"
+	"EnemyBullet.h"
+	<vector>
+	<cstdlib>
+	<ctime>
 
 1742463344 source:d:\ltnc\projectgameplane\commonfunc.cpp
 	"CommonFunc.h"
 
-1742463344 source:d:\ltnc\projectgameplane\mapgame.cpp
+1743311922 source:d:\ltnc\projectgameplane\mapgame.cpp
 	"MapGame.h"
 	<sstream>
 	<fstream>
 
-1742463344 source:d:\ltnc\projectgameplane\planemain.cpp
+1743311922 source:d:\ltnc\projectgameplane\planemain.cpp
 	"PlaneMain.h"
 
 1742463344 source:d:\ltnc\projectgameplane\textobject.cpp
@@ -49,7 +59,7 @@
 	<string>
 	<SDL_ttf.h>
 
-1743061393 source:d:\ltnc\projectgameplane\main.cpp
+1743311922 source:d:\ltnc\projectgameplane\main.cpp
 	"CommonFunc.h"
 	"BaseObject.h"
 	"PlaneMain.h"
@@ -57,7 +67,7 @@
 	"TextObject.h"
 	"Menu.h"
 
-1742756086 d:\ltnc\projectgameplane\menu.h
+1743234834 d:\ltnc\projectgameplane\menu.h
 	"MenuItem.h"
 	"TextObject.h"
 	<vector>
@@ -66,9 +76,15 @@
 	"BaseObject.h"
 	<string>
 
-1743045701 source:d:\ltnc\projectgameplane\menu.cpp
+1743311922 source:d:\ltnc\projectgameplane\menu.cpp
 	"Menu.h"
 
 1742756086 source:d:\ltnc\projectgameplane\menuitem.cpp
 	"MenuItem.h"
+
+1743311677 d:\ltnc\projectgameplane\enemybullet.h
+	"BaseObject.h"
+
+1743311676 source:d:\ltnc\projectgameplane\enemybullet.cpp
+	"EnemyBullet.h"
 

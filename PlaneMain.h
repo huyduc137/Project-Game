@@ -52,6 +52,9 @@ public:
     int getLives() const;
     bool isGameOver() const;
 
+    void CheckEnemyBulletCollision();   // kiểm tra va chạm giữa enemy và máy bay chính
+    SDL_Rect GetHitbox() const;      // lấy hitbox của máy bay để tính va chạm
+
 private:
     std::vector<Bullet*> bullet_list;
 
@@ -69,6 +72,11 @@ private:
     bool double_shot; // trạng thái bắn 2 đạn
     Uint32 double_shot_start_time;  // thời gian bắt đầu bắn đạn đôi
     Uint32 double_shot_duration;    // thời gian duy trì đạn đôi
+
+    // quản lý trạng thái bất khả xâm phạm sau va chạm
+    bool is_invulnerable;
+    Uint32 invulnerable_start_time;
+    Uint32 invulnerable_duration;
 };
 
 #endif //PLANEMAIN_H

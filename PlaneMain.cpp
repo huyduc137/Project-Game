@@ -12,7 +12,7 @@ PlaneMain::PlaneMain() {
 
     // Khởi tạo các biến cho chức năng bắn liên tục
     last_shooting_time = 0;
-    shooting_delay = 100;  // 200ms giữa các lần bắn
+    shooting_delay = 150;  // 150ms giữa các lần bắn
     is_shooting = false;
 
     score = 0;
@@ -21,6 +21,10 @@ PlaneMain::PlaneMain() {
     double_shot = false;
     double_shot_start_time = 0;
     double_shot_duration = 5000;  // thời gian bắn đạn đôi
+
+    is_invulnerable = false;
+    invulnerable_start_time = 0;
+    invulnerable_duration = 2000; // 2000ms invulnerability after hit
 
 }
 
@@ -315,6 +319,12 @@ void PlaneMain::updatePowerUps() {
     if (double_shot && SDL_GetTicks() - double_shot_start_time > double_shot_duration) {
         double_shot = false;
     }
+    // Cập nhật trạng thái bất khả xâm phạm (invulnerability)
+    if (is_invulnerable) {
+        if (SDL_GetTicks() - invulnerable_start_time > invulnerable_duration) {
+            is_invulnerable = false;
+        }
+    }
 }
 
 int PlaneMain::getLives() const {
@@ -325,3 +335,45 @@ bool PlaneMain::isGameOver() const {
     return lives <= 0;
 }
 
+SDL_Rect PlaneMain::GetHitbox() const {
+    return {
+        x_pos + rect_.w/4,
+        y_pos + rect_.h/4,
+        rect_.w/2,
+        rect_.h/2
+    };
+}
+// Hàm tiện ích kiểm tra va chạm giữa hai SDL_Rect
+static bool CheckCollisionRect(const SDL_Rect& a, const SDL_Rect& b) {
+    if (a.x + a.w <= b.x) return false;
+    if (b.x + b.w <= a.x) return false;
+    if (a.y + a.h <= b.y) return false;
+    if (b.y + b.h <= a.y) return false;
+    return true;
+}
+void PlaneMain::CheckEnemyBulletCollision() {
+    // Nếu chưa liên kết map hoặc đang ở trạng thái bất khả xâm phạm, không kiểm tra
+    if (!map_ || is_invulnerable) return;
+
+    SDL_Rect plane_hitbox = GetHitbox();
+
+    // Lấy danh sách đạn của enemy từ map
+    std::vector<EnemyBullet*>& enemy_bullets = map_->getEnemyBullets();
+
+    for (size_t i = 0; i < enemy_bullets.size(); i++) {
+        EnemyBullet* bullet = enemy_bullets[i];
+        if (bullet && bullet->get_is_move()) {
+            SDL_Rect bullet_rect = bullet->getRect();
+            // Kiểm tra va chạm giữa hitbox của máy bay và đạn enemy
+            if (CheckCollisionRect(plane_hitbox, bullet_rect)) {
+                // Khi va chạm, đánh dấu đạn không còn di chuyển
+                bullet->set_is_move(false);
+                // Giảm 1 sinh mạng
+                decreaseLives(1);
+                // Đặt trạng thái bất khả xâm phạm để tránh nhận sát thương liên tục (ví dụ 2000ms)
+                is_invulnerable = true;
+                invulnerable_start_time = SDL_GetTicks();
+            }
+        }
+    }
+}

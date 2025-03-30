@@ -38,6 +38,10 @@ Người chơi sẽ sử dụng các phím mũi tên **Phải**, **Trái**, **L�
     - Cung cấp các hàm để đặt và lấy ra giá trị vị trí của viên đạn (x_val , y_val)
     - Quản lý trạng thái di chuyển của đạn thông qua biến is_move_
     - Hàm handleMove cập nhật vị trí của đạn và đánh dấu đạn ngừng di chuyển khi ra khỏi màn hình
+- **EnemyBullet:**
+    - Kế thừa từ Bullet xử lý đạn của máy bay địch, bao gồm việc tạo, di chuyển đạn.
+    - Quản lý trạng thái di chuyển của đạn thông qua biến is_move.
+    - Hàm handMove cập nhật vị trí của đạn và đánh dấu đạn ngừng di chuyển khi ra khỏi màn hình.
 - **MapGame:**
     - Quản lý dữ liệu bản đồ (tile map) của game
     - Struct infor_tile: lưu thông tin về map bao gồm vị trí bắt đầu hiển thị (x_start, y_start), kích thước (max_x, max_y), ma trận các tile (mỗi tile có một kiểu số nguyên biểu diễn loại) và tên file dữ liệu.

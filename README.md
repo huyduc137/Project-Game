@@ -4,6 +4,8 @@
 - Mã Sinh Viên: 24020162
 - Lớp: IT9 - K69
 - Mã học phần: INT2215-3
+## Review Game
+- [Review Game](https://www.youtube.com/watch?v=ubv8OA-vonw)
 ## Giới thiệu game
 **Save The World** là 1 game thuộc thể loại hành động. Game sẽ cho người chơi điều khiển 1 chiếc máy bay chiến đấu để bắn hạ kẻ địch xuất hiện trên màn hình. Dòng game đòi hỏi có lối chơi nhanh, phản xạ tốt. Nếu người chơi chạm vào kẻ địch thì sẽ bị mất 1 sinh mạng. Nếu hết sinh mạng thì game sẽ kết thúc. Nếu bắn hết kẻ địch thì người chơi sẽ chiến thắng. Trong game còn có các chức năng tăng sinh mạng và nâng cấp đạn cho máy bay người chơi.  
 ### 1. Bắt đầu game
